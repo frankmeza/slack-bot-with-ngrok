@@ -1,0 +1,11 @@
+{
+  "name": "slack-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Frank Meza <frankmezapdx@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.16.4",
+    "request": "^2.88.0"
+  }
+}
