@@ -1,10 +1,5 @@
 const request = require("request")
 const qs = require("querystring")
-
-const credentials = require("./secrets")
-const clientId = credentials.clientId
-const clientSecret = credentials.clientSecret
-
 const app = require("./middleware")
 const PORT = 4390
 
@@ -21,11 +16,13 @@ app.get("/", function(req, res) {
 app.post("/command/til", h.handleTodayILearned)
 
 app.post("/command", (_, res) => {
-    request({
-        url: "https://jsonplaceholder.typicode.com/todos/3",
-        method: "GET",
-    },
-    (err, _, body) => {
-        err ? console.log(err) : res.send(body)
-    })
+    request(
+        {
+            url: "https://jsonplaceholder.typicode.com/todos/3",
+            method: "GET",
+        },
+        (err, _, body) => {
+            err ? console.log(err) : res.send(body)
+        }
+    )
 })
