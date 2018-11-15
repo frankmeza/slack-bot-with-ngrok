@@ -3,10 +3,10 @@ const handleTodayILearned = (req, res) => {
     console.log(body)
 
     res.json({
-        text: "It's 40 degrees right now.",
+        text: "Awesome! Your TIL has been recorded :white_check_mark:",
         attachments: [
             {
-                text: "Partly cloudy today and tomorrow",
+                text: "Visit your dev journal at URL to see this and other reflections",
             },
         ],
     })
