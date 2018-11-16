@@ -6,16 +6,19 @@ const handleTodayILearned = (req, res) => {
     const { body } = req
 
     const database = firebase.database()
-    database.ref("users/").set({
-        body,
-    })
+    const now = new Date()
+    const date = `${now.getMonth() + 1}_${now.getDate()}_${now.getFullYear()}`
+
+    database
+        .ref("users/" + body.user_id + "/til/" + date)
+        .push()
+        .update({ text: body.text, ts: Date.now() })
 
     res.json({
         text: "Awesome! Your TIL has been recorded :white_check_mark:",
         attachments: [
             {
-                text:
-                    "Visit your dev journal at URL to see this and other reflections",
+                text: body.text,
             },
         ],
     })
