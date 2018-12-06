@@ -2,6 +2,9 @@ const request = require("request")
 const qs = require("querystring")
 const app = require("./middleware")
 const PORT = 4390
+const firebase = require("firebase")
+const config = require("./secrets").config
+firebase.initializeApp(config)
 
 const h = require("./command_handlers") // handlers
 
@@ -14,6 +17,12 @@ app.get("/", function(req, res) {
 })
 
 app.post("/command/til", h.handleTodayILearned)
+
+app.post("/command/pingMe", h.pingMe)
+
+app.post("/command/dev", h.handleDev)
+
+app.post("/command/report", h.handleReport)
 
 app.post("/command", (_, res) => {
     request(
