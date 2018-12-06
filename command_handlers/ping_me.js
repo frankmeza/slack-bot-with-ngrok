@@ -1,21 +1,11 @@
 const request = require("request")
 const SlackBot = require("slackbots")
-
-function requestFunc() {
-    const pathToCall = "http://slack.com/api/chat.postMessage?token=xoxp-464372623812-464448139251-494949241617-b50351ebf9323bd96742c5351654544e&channel=DDNB034SY&text=testjasdfjadfj"
-    request(pathToCall, function(error, response, body) {
-        if (!error && response.statusCode == 200) {
-            console.log('Success');
-        } else {
-            console.log(error);
-        }
-    })
-}
+const {slackTokens} = require("../secrets")
 
 function pingMe(req, res) {
 
     const bot = new SlackBot({
-        token: "xoxb-464372623812-495513664163-vARu95rVgD4BzRre6uE6p75g",
+        token: slackTokens.botToken,
         name: "ngrok"
     })
 
@@ -105,7 +95,6 @@ function pingMe(req, res) {
 
     res.json({
         text: "Ping after time",
-        response_url: "https://hooks.slack.com/commands/TDNAYJBPW/494437715683/HWhlTOPLkwlLmac46upqEzRz",
         attachments: [
             {
                 text: `How are you feeling today`,
