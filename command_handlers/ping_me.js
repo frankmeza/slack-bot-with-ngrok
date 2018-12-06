@@ -1,7 +1,16 @@
 const request = require("request")
 const SlackBot = require("slackbots")
 
-
+function requestFunc() {
+    const pathToCall = "http://slack.com/api/chat.postMessage?token=xoxp-464372623812-464448139251-494949241617-b50351ebf9323bd96742c5351654544e&channel=DDNB034SY&text=testjasdfjadfj"
+    request(pathToCall, function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log('Success');
+        } else {
+            console.log(error);
+        }
+    })
+}
 
 function pingMe(req, res) {
 
